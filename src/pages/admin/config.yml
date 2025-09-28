@@ -1,7 +1,8 @@
 backend:
   name: github
-  repo: Jozef-Virag/tvorime-weby
-  branch: main
+  repo: Jozef-Virag/restaurant-admin
+  branch: master
+  auth_score: https://restaurant-admin-beryl.vercel.app/api/auth
 
 media_folder: "public/uploads"   # kde sa ukladajú obrázky v projekte
 public_folder: "/uploads"        # cesta, ktorú bude používať web
