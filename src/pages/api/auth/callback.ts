@@ -30,9 +30,18 @@ export const GET: APIRoute = async ({ request }) => {
         return new Response(JSON.stringify(data), { status: 400 });
     }
 
-    // access_token -> uložiť alebo poslať DecapCMS
-    return new Response(JSON.stringify(data), {
+    // access_token -> vráť HTML stránku pre Decap CMS
+    const html = `<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      window.opener.postMessage({ token: "${data.access_token}", provider: "github" }, window.location.origin);
+      window.close();
+    </script>
+  </body>
+</html>`;
+    return new Response(html, {
         status: 200,
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "text/html" },
     });
 };
